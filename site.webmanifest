@@ -1,0 +1,12 @@
+{
+  "name": "dEngine — A decentralized learning framework",
+  "short_name": "dEngine",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FCFBF7",
+  "theme_color": "#FCFBF7",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

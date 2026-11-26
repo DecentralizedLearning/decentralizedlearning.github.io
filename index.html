@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary SEO -->
+  <title>dEngine: A Decentralized Learning Framework for Python</title>
+  <meta name="description" content="dEngine is an open-source Python framework for simulating decentralized, federated and gossip-based machine learning on many devices with siloed, non-IID data. Built on PyTorch.">
+  <meta name="keywords" content="decentralized learning, federated learning, gossip learning, decentralized SGD, distributed deep learning, non-IID data, PyTorch, simulation framework, dEngine">
+  <meta name="author" content="dEngine contributors">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://decentralizedlearning.github.io/">
+  <meta name="theme-color" content="#FCFBF7">
+  <meta name="google-site-verification" content="RG_4-3rzFUyyteY_FpESYSun4tVhy1iM1t47oZ4NNBg" />
+  <meta name="msvalidate.01" content="2A2F269F8B9F740073333FE28EE1BD5E" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="dEngine">
+  <meta property="og:title" content="dEngine: A decentralized learning framework.">
+  <meta property="og:description" content="An open-source Python framework for decentralized, federated and gossip-based machine learning across many devices with siloed data.">
+  <meta property="og:url" content="https://decentralizedlearning.github.io/">
+  <meta property="og:image" content="https://decentralizedlearning.github.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="dEngine: A decentralized learning framework.">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="dEngine: A Decentralized Learning Framework for Python">
+  <meta name="twitter:description" content="An open-source Python framework for decentralized, federated and gossip-based machine learning.">
+  <meta name="twitter:image" content="https://decentralizedlearning.github.io/assets/img/og-image.png">
+
+  <!-- Icons & manifest -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- KaTeX: renders the LaTeX formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}], throwOnError: false});"></script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Header GitHub icon + classic email link (move into style.css if you prefer) -->
+  <style>
+    .header-github {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: inherit;
+      opacity: .8;
+      transition: opacity .15s ease;
+    }
+    .header-github:hover,
+    .header-github:focus-visible { opacity: 1; }
+    .header-github svg { width: 24px; height: 24px; display: block; }
+
+    .contact-email {
+      font-size: 1.05rem;
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+    .contact-email:hover,
+    .contact-email:focus-visible { text-decoration-thickness: 2px; }
+
+    /* Tighten the gap between the Overview steps and the CTA box */
+    .overview { padding-bottom: 48px; }
+    .overview .steps,
+    .overview .steps li:last-child { margin-bottom: 0; padding-bottom: 0; }
+    .cta-wrap { padding-top: 48px; }
+  </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://decentralizedlearning.github.io/#website",
+        "url": "https://decentralizedlearning.github.io/",
+        "name": "dEngine",
+        "description": "A decentralized learning framework.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://decentralizedlearning.github.io/#org",
+        "name": "dEngine",
+        "url": "https://decentralizedlearning.github.io/",
+        "logo": "https://decentralizedlearning.github.io/assets/images/logo.png",
+        "sameAs": ["https://github.com/DecentralizedLearning"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://decentralizedlearning.github.io/#software",
+        "name": "dEngine",
+        "description": "A Python simulation framework for research on decentralized, federated, and gossip-style machine learning, built on PyTorch.",
+        "url": "https://decentralizedlearning.github.io/",
+        "codeRepository": "https://github.com/DecentralizedLearning/dEngine",
+        "programmingLanguage": "Python",
+        "runtimePlatform": "Python 3.13+",
+        "license": "https://opensource.org/licenses/MIT",
+        "keywords": "decentralized learning, federated learning, gossip learning, PyTorch"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="dEngine home">
+        <img src="/assets/images/logo.png" alt="dEngine logo" width="30" height="30">
+        <span>dEngine</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#overview">Overview</a>
+        <a href="#contact">Contact</a>
+        <a href="#resources">Resources</a>
+      </nav>
+      <a class="header-github" href="https://github.com/DecentralizedLearning/dEngine" target="_blank" rel="noopener" aria-label="dEngine on GitHub" title="dEngine on GitHub">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-logo"><img src="/assets/images/logo.png" alt="dEngine" width="140" height="140"></h1>
+        <p class="hero-sub">dEngine: A Decentralized Learning Framework for Python</p>
+        <p class="hero-tag">Collaborative learning across devices with siloed data.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#overview">Learn more<span aria-hidden="true">↓</span></a>
+          <a class="btn btn-outline" href="https://github.com/DecentralizedLearning/dEngine" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillars -->
+    <section class="pillars" aria-label="Key principles">
+      <div class="container pillars-grid">
+        <article class="pillar">
+          <span class="num">01</span>
+          <h2>Connected, not centralized</h2>
+          <p>Devices exchange information only with their neighbors in a communication graph.</p>
+        </article>
+        <article class="pillar">
+          <span class="num">02</span>
+          <h2>Private by design</h2>
+          <p>Local data never leaves the device. Each node learns from its own distribution.</p>
+        </article>
+        <article class="pillar">
+          <span class="num">03</span>
+          <h2>Train locally, improve globally</h2>
+          <p>Every participant strengthens the shared model while keeping their data right where it belongs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section id="overview" class="overview">
+      <div class="container overview-grid">
+        <div class="overview-intro">
+          <p class="eyebrow">Under the hood</p>
+          <h2 class="display">Local learning.<br>Global progress.</h2>
+          <p class="lead">We try to solve a shared optimization problem across a network of devices without a central view of their data.</p>
+          <figure class="objective">
+            <figcaption class="eyebrow">Shared objective</figcaption>
+            <div class="formula">\[ \min_{W \in \mathbb{R}^d} \; f(W) = \frac{1}{n} \sum_{i=1}^{n} F_i(W; D_i) \]</div>
+          </figure>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="num">01</span>
+            <div>
+              <h3>A network of devices</h3>
+              <p>\(n\) devices, indexed by \(i \in \{1, \dots, n\}\), form a communication graph \(G = (V, E)\). Each device exchanges information only with its neighbors \(N_i = \{ j : (i, j) \in E \}\).</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <div>
+              <h3>The model parameters</h3>
+              <p>\(W \in \mathbb{R}^d\) represents the model parameters.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <div>
+              <h3>Private, heterogeneous data</h3>
+              <p>\(D_i\) is the local data distribution at device \(i\). It is private and never leaves the device. Different devices can have different distributions (non-IID data).</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <div>
+              <h3>A local objective</h3>
+              <p class="math-block">\[ F_i(W; D_i) = \mathbb{E}_{\xi \sim D_i} \big[ \ell(W; \xi) \big] \]</p>
+              <p>The local objective at device \(i\), where \(\ell(W; \xi)\) is the loss of model \(W\) on sample \(\xi\).</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">05</span>
+            <div>
+              <h3>The global objective</h3>
+              <p>\(f(W)\) is the average of the local objectives. Device \(i\) can evaluate (stochastic) gradients of \(F_i\) only, never of \(f\).</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-wrap">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <p class="eyebrow">Better, together</p>
+            <h2>Start experimenting with dEngine.</h2>
+            <p>Explore the project, follow the research, and contribute on GitHub.</p>
+          </div>
+          <a class="btn btn-dark" href="https://github.com/DecentralizedLearning/dEngine" target="_blank" rel="noopener">Explore on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container contact-inner">
+        <div class="contact-text">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="display-sm">Contacts</h2>
+          <p>Want more info about dEngine, have an idea to share, or interested in collaborating?
+            <a class="contact-email" href="mailto:samuele.sabella@iit.cnr.it?subject=dEngine">Drop us an email</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">dEngine</span>
+      <span class="footer-text">A decentralized learning framework. · MIT License</span>
+      <a href="https://github.com/DecentralizedLearning/dEngine" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </footer>
+</body>
+</html>

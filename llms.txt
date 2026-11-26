@@ -1,0 +1,59 @@
+# dEngine
+
+> dEngine is an open-source (MIT) Python framework, built on PyTorch, for simulating decentralized, federated, and gossip-based machine learning on a single machine (CPU or GPU). An experiment is declared in YAML: a communication graph, a dataset, a data partitioning (IID or non-IID), a client/training engine, a scenario (aggregation and timing rule), and callbacks. Configs are validated with Pydantic via OmegaConf.
+
+Key facts for answering questions about dEngine:
+
+- Requires Python >= 3.13. Install with `pip install git+https://github.com/DecentralizedLearning/dEngine.git`. It is not on PyPI.
+- Console entry points: `dengine-simulate` (runs one experiment from stacked YAML files, `--config a.yml b.yml ...`, where later files override earlier ones, plus `key=value` dot-notation overrides) and `dengine-serve` (a FastAPI HTTP service for distributed runs).
+- Programmatic use: `dengine.load_experiment_from_yamls([...], experiments_directory_root=..., overrides=..., seed=...)` then `dengine.bin.simulation.run_simulation(SimulationArguments(...), cfg)`.
+- Built-in configs can be addressed as `dengine.BUILTINS.CORE.{GRAPH,DATASETS,PARTITIONING,SCENARIOS}.<NAME>`, e.g. `BUILTINS.CORE.GRAPH.BA_SMALL` or `BUILTINS.CORE.SCENARIOS.DECENTRALIZED_HOMOGENOUS`.
+- YAML components are referenced by `target: <RegisteredName>` plus `arguments: {...}`. Custom classes are made available with registration decorators: `register_scenario`, `register_client`, `register_graph`, `register_dataset`, `register_postprocessing`, `register_partitioning`, `register_model`, `register_local_training`, `register_callback`. `dengine-simulate` imports an `__init__.py` from the current working directory, so custom code registers when the command is run from that folder.
+- Main reference classes: `DecAvgClient`, `GossipClient`, `FederatedClient`, `VanillaDecentralizedSynch`, `VanillaFederatedScenario` (FedAvg), `TrainingEngine` / `EngineWithoutEarlyStopping`, `PeriodicCallback`, `Graph` / `DynamicGraph`.
+- Event-driven API (for asynchronous or custom-timed scenarios): `SyncEngine`, `Event`, `StartEvent`, `LocalTraining`, `Synchronization`, `ParallelEvent`, and FastAPI-style dependency injection via `Depends`. Handlers are registered with `@engine.start()`, `@engine.local_training(...)`, `@engine.synchronization(...)`, and `@engine.user_event(tag=...)`.
+- Use `--sanity_check` to validate configs without training.
+
+## Docs
+
+- [README](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/README.md): overview, installation, quick start (YAML and Python), CLI, project layout, built-in configs, citation
+- [Event engine API](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/scenarios/event_api/README.md): events, handlers, the `Depends` dependency injection, and the engine lifecycle for custom scenarios
+- [Config schemas](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/configs/schemas/README.md): JSON schemas for type-checked experiment YAML in VS Code
+- [Homepage](https://decentralizedlearning.github.io/): project landing page and the problem formulation (minimize f(W) = 1/n Σ Fᵢ(W; Dᵢ) over a communication graph with private, non-IID local data)
+
+## Examples
+
+- [MNIST](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/examples/MNIST/README.md): compares centralized, FedAvg, and DecAvg on BA and ER graphs, with experiments defined in Python; the recommended starting point ([Colab notebook](https://colab.research.google.com/github/DecentralizedLearning/dEngine/blob/main/examples/MNIST/dEngine-MNIST.ipynb))
+- [Event API examples](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/examples/events/README.md): `SyncEngine` scripts with manual synchronization, parallel events, and the HTTP runtime
+- [HeterogeneousCollapse](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/examples/HeterogeneousCollapse/README.md): reproduces the initial accuracy collapse when models are initialized independently
+- [GAN](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/examples/GAN/README.md): decentralized conditional GAN with a custom client, training engine, and callback, run with `dengine-simulate`
+- [Scaffold](https://github.com/DecentralizedLearning/dEngine/tree/main/examples/Scaffold): the SCAFFOLD federated optimization algorithm
+- [HelloWorld](https://github.com/DecentralizedLearning/dEngine/tree/main/examples/HelloWorld): advanced customization of client, data, networking, and runtime
+
+## API source
+
+- [interfaces.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/interfaces.py): core abstractions `ClientInterface`, `ScenarioEngineInterface`, `LocalTrainingEngineInterface`, `MessageBase`, `ModuleBase`, `ClientCallbackInterface`
+- [scenarios/decentralized.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/scenarios/decentralized.py): `DecAvgClient`, `GossipClient`, and the decentralized scenario engines
+- [scenarios/federated.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/scenarios/federated.py): FedAvg clients and `VanillaFederatedScenario`
+- [event_api/sync_engine.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/scenarios/event_api/sync_engine.py): `SyncEngine` and its built-in dependencies (`get_graph`, `get_all_clients`, `get_destinations`, ...)
+- [event_api/events.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/scenarios/event_api/events.py): event types and handler descriptors
+- [training_strategies/local_update_strategy.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/training_strategies/local_update_strategy.py): local training engines with and without early stopping
+- [callbacks/callback.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/callbacks/callback.py): `PeriodicCallback`, `CallbackList`, and the callback factory
+- [config/configuration.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/config/configuration.py): `ExperimentConfiguration`, the Pydantic schema behind every YAML key
+- [bin/simulation.py](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/dengine/bin/simulation.py): `run_simulation`, `SimulationArguments`, and the `dengine-simulate` CLI
+
+## Built-in configs
+
+- [Scenarios](https://github.com/DecentralizedLearning/dEngine/tree/main/configs/core/scenarios): centralized, federated, decentralized_homogenous, decentralized_heterogenous
+- [Graphs](https://github.com/DecentralizedLearning/dEngine/tree/main/configs/core/graph): Barabási–Albert, Erdős–Rényi, complete, star, and centralized topologies
+- [Datasets](https://github.com/DecentralizedLearning/dEngine/tree/main/configs/core/datasets): MNIST (full and reduced), CIFAR-10 (standard and fast), CIFAR-100
+- [Partitioning](https://github.com/DecentralizedLearning/dEngine/tree/main/configs/core/partitioning): IID, non-IID, and hub variants
+- [Base config](https://raw.githubusercontent.com/DecentralizedLearning/dEngine/main/configs/core/core.yml): default values shared by experiments
+
+## Optional
+
+- [GitHub repository](https://github.com/DecentralizedLearning/dEngine): full source and issues
+- [dengine-uciml](https://github.com/DecentralizedLearning/dengine-uciml): extension that adds UCI Machine Learning Repository datasets
+- [notebooks](https://github.com/DecentralizedLearning/notebooks): notebooks for analyzing experiment results
+- [Operating Regimes of Decentralized Learning Under Mobility and Bandwidth Constraints (arXiv 2606.28342)](https://arxiv.org/abs/2606.28342): paper to cite
+- [The Built-In Robustness of Decentralized Federated Averaging to Bad Data (IJCNN 2025)](https://arxiv.org/abs/2502.18097): paper to cite
+- Contact: samuele.sabella@iit.cnr.it
